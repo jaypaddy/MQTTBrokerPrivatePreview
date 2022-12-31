@@ -7,28 +7,21 @@ import logging  # noqa: F401
 import json
 import time
 from paho_client import PahoClient
-from dotenv import load_dotenv
-load_dotenv()
 
 """
 Uncomment the following lines to enable debug logging
 """
-if len(sys.argv) != 2:
-    sys.exit("Not enough args")
-envseq="{}_".format(str(sys.argv[1]))
 
 # logging.basicConfig(level=logging.INFO)
 # logging.getLogger("paho").setLevel(level=logging.DEBUG)
 
-client_id = os.getenv("{}SUB_CLIENT_ID".format(envseq))
-print(client_id)
-gw_url = os.getenv("GW_NS_URL")
-print(gw_url)
-topic_filter = os.getenv("{}SUB_TOPIC_FILTER".format(envseq)) #All Assets
-cert_path = os.getenv("{}SUB_CERT_PATH".format(envseq))
-print(cert_path)
-cert_key_path = os.getenv("{}SUB_CERT_KEY_PATH".format(envseq))
-print(cert_key_path)
+client_id = "sub-client"
+gw_url = "mqtteventgridns.centraluseuap-1.ts.eventgrid.azure.net" 
+#os.environ["gw_url"]
+
+topic_filter = "samples/#"
+cert_path = "../MyWork/Certs/sub-client.cert.pem"
+cert_key_path = "../MyWork/Certs/sub-client.key.pem"
 
 ##################################
 # CREATE CLIENT

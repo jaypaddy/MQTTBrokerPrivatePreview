@@ -1,0 +1,1 @@
+os.getenv("{}PUB_CLIENT_ID".format(envseq))
